@@ -1,0 +1,37 @@
+<template name="user">
+<!--   {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="home"}}
+  {{/contentFor}} -->
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">用户信息</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#if currentUser}}
+        {{#autoForm collection="Meteor.users" doc=current id="profile-edit-form" type="update" schema=userJoinSchema}}
+          {{> afQuickFields omitFields=""}}
+          <div class="padding">
+            <button type="submit" class="button button-positive button-block">保存</button>
+          </div>
+        {{/autoForm}}
+
+        <div class="item item-divider">
+          我的房间
+        </div>
+        {{#each rooms}}
+          {{#ionItem buttonRight=true class="item-icon-right"}}
+            {{name}}
+            <i class="icon ion-ios-arrow-forward positive" data-ion-modal="gameEdit" data-id="{{_id}}"></i>
+            <!-- {{> ionIcon icon="ios-arrow-forward" class="positive"}} -->
+          {{/ionItem}}
+        {{/each}}
+        <div class="padding">
+          <button class="button button-assertive button-block" data-action="logout">注销</button>
+        </div>
+      {{else}}
+        {{> atForm}}
+      {{/if}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>

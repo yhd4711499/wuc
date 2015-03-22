@@ -1,0 +1,19 @@
+<template name="gameEdit">
+  {{#ionModal customTemplate=true}}
+    {{#autoForm collection="Games" id="games-edit-form" doc=game type="update"}}
+      <div class="bar bar-header bar-stable">
+        <button data-dismiss="modal" type="button" class="button button-clear">取消</button>
+        <h2 class="title">房间信息</h2>
+        <button type="submit" class="button button-positive button-clear" id="create">保存</button>
+      </div>
+      <div class="content has-header overflow-scroll">
+        {{> afQuickFields omitFields="createdAt,status,round,white,black,players,_ownerId"}}
+        <div class="padding">
+          <button class="button button-outline button-assertive full-width" data-action="delete">
+            删除
+          </button>
+        </div>
+      </div>
+    {{/autoForm}}
+  {{/ionModal}}
+</template>

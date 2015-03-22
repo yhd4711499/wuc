@@ -1,0 +1,14 @@
+<template name="addItem">
+  {{#ionModal customTemplate=true}}
+    {{#autoForm collection="Items" id="items-new-form" type="insert"}}
+      <div class="bar bar-header bar-stable">
+        <button data-dismiss="modal" type="button" class="button button-clear">取消</button>
+        <h2 class="title">添加词条</h2>
+        <button type="submit" class="button button-positive button-clear">添加</button>
+      </div>
+      <div class="content has-header overflow-scroll">
+        {{> afQuickFields omitFields=""}}
+      </div>
+    {{/autoForm}}
+  {{/ionModal}}
+</template>

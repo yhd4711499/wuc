@@ -1,0 +1,53 @@
+<!-- <template name="home">
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Contacts</h1>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear user" id="user">{{> ionIcon icon="ios-plus-empty"}}</button>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#if currentUser}}
+        {{#ionList}}
+
+          {{#ionItem path="new" buttonRight=true class="item-icon-right"}}
+            {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+            新游戏
+          {{/ionItem}}
+
+          {{#ionItem path="games" buttonRight=true class="item-icon-right"}}
+            {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+            加入游戏
+          {{/ionItem}}
+
+          {{#ionItem path="user" buttonRight=true class="item-icon-right"}}
+            {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+            用户
+          {{/ionItem}}
+
+          {{#ionItem path="items" buttonRight=true class="item-icon-right"}}
+            {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+            词条
+          {{/ionItem}}
+        {{/ionList}}
+        
+      {{else}}
+        {{> atForm}}
+      {{/if}}
+    {{/ionContent}}
+  {{/ionView}}
+</template> -->
+
+ <template name="home">
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">谁是卧底</h1>
+  {{/contentFor}}
+
+  {{#ionTabs style="ios"}}
+      {{> ionTab title="游戏" path="games" iconOff="ios-home-outline" iconOn="ios-home"}}
+      {{> ionTab title="我" path="user" iconOff="ios-heart-outline" iconOn="ios-heart"}}
+      {{> ionTab title="后台" path="items" iconOff="ios-gear-outline" iconOn="ios-gear"}}
+    {{/ionTabs}}
+</template>

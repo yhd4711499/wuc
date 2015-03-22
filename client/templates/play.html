@@ -1,0 +1,126 @@
+<template name="play">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton text="离开" path="games"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">
+      {{#if equals game.status 0}}
+        等待其他玩家
+      {{/if}}
+      {{#if equals game.status 1}}
+        游戏马上开始
+      {{/if}}
+      {{#if equals game.status 2}}
+        游戏正在进行
+      {{/if}}
+    </h1>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+    {{#if equals game.status 0}}
+      {{#if equals game._ownerId currentUser._id}}
+        <button class="button button-clear" data-ion-modal="gameEdit" data-id="{{game._id}}">编辑</button>
+      {{/if}}
+    {{/if}}
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+    
+      {{#if me.item}}
+        <div class="card">
+            <div class="item item-text-wrap item-icon-right">
+              {{#if showItem}}
+                {{me.item}}
+              {{else}}
+                按住右边的图标来查看
+              {{/if}}
+              <i class="icon ion-eye" data-action="view"></i>
+            </div>
+        </div>
+      {{/if}}
+
+      {{#ionList}}
+        {{#if mAlivePlayers.count}}
+          <div class="item item-divider">
+            健在
+          </div>
+          {{#each mAlivePlayers}}
+            {{#ionItem buttonRight=true}}
+              <h2>
+                {{#if ready}}
+                  <span class="accent">(已准备)</span>
+                {{/if}}
+                {{nickname}}
+              </h2>
+              {{#if canVote}}
+                <button class="button button-clear button-assertive" data-action="vote">投他</button>
+              {{/if}}
+            {{/ionItem}}
+          {{/each}}
+        {{/if}}
+
+        {{#if mDeadPlayers.count}}
+          <div class="item item-divider">
+            领便当去了
+          </div>
+          {{#each mDeadPlayers}}
+            {{#ionItem}}
+              {{#if ready}}
+                <span class="accent">(已准备)</span>
+              {{/if}}
+              {{nickname}}
+            {{/ionItem}}
+          {{/each}}
+        {{/if}}
+        
+        {{#if mAwaitingPlayers.count}}
+          <div class="item item-divider">
+            围观中
+          </div>
+          {{#each mAwaitingPlayers}}
+            {{#ionItem}}
+              {{#if ready}}
+                <span class="accent">(已准备)</span>
+              {{/if}}
+              {{nickname}}
+            {{/ionItem}}
+          {{/each}}
+        {{/if}}
+      {{/ionList}}
+
+      <div class="padding">
+        {{#unless equals game.status 2}}
+          {{#if me.ready}}
+            <button class="button button-dark button-block" data-action="notReady">取消准备</button>
+          {{else}}
+            <button class="button button-positive button-block" data-action="ready">准备OK</button>
+          {{/if}}
+        {{/unless}}
+      </div>
+
+      <div class="item item-divider">
+        日志
+      </div>
+      {{#ionItem}}
+        {{#each gamelogs}}
+          <div class="game-info-{{level}}">
+              {{content}}
+          </div>
+        {{/each}}
+      {{/ionItem}}
+    {{/ionContent}}
+
+    {{#if equals me.status 2}}
+      {{#ionFooterBar class="bar-dark"}}
+        <h1 class="title">你已经挂了</h1>
+      {{/ionFooterBar}}
+    {{else}}
+      {{#ionFooterBar class="bar-balanced"}}
+        <h1 class="title">{{banner.content}}</h1>
+      {{/ionFooterBar}}
+    {{/if}}
+
+  {{/ionView}}
+</template>

@@ -1,0 +1,19 @@
+<template name="itemsEdit">
+  {{#ionModal customTemplate=true}}
+    {{#autoForm collection="Items" doc=item id="items-edit-form" type="update"}}
+      <div class="bar bar-header bar-stable">
+        <button data-dismiss="modal" type="button" class="button button-clear">取消</button>
+        <h2 class="title">修改词条</h2>
+        <button type="submit" class="button button-positive button-clear">保存</button>
+      </div>
+      <div class="content has-header overflow-scroll">
+        {{> afQuickFields omitFields=""}}
+        <div class="padding">
+          <button class="button button-outline button-assertive full-width" data-action="delete">
+            删除
+          </button>
+        </div>
+      </div>
+    {{/autoForm}}
+  {{/ionModal}}
+</template>

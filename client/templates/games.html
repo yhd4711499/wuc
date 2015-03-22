@@ -1,0 +1,44 @@
+<template name="games">
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">游戏</h1>
+  {{/contentFor}}
+
+<!--   {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton text="Back" path="home"}}
+  {{/contentFor}} -->
+
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear" data-ion-modal="new">{{> ionIcon icon="ios-plus-empty"}}</button>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+        <div class="item item-divider">
+          空闲的房间
+        </div>
+        {{#each awaitingGames}}
+          {{#ionItem path="play" buttonRight=true class="item-icon-right"}}
+            {{name}}
+            {{#if players}}
+              <span class="small accent">{{players}}人</span>
+            {{else}}
+              <span class="small">没人</span>
+            {{/if}}
+            {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+          {{/ionItem}}
+        {{/each}}
+
+        <div class="item item-divider">
+          正在游戏
+        </div>
+        {{#each games}}
+          {{#ionItem buttonRight=true class="item-icon-right"}}
+            {{name}}
+            {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+          {{/ionItem}}
+        {{/each}}
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>

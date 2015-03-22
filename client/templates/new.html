@@ -1,0 +1,47 @@
+<!-- <template name="new">
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">新游戏</h1>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton text="Back"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear">{{> ionIcon icon="ios-checkmark-empty"}}</button>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#with game}}
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">房间名称</span>
+          <input type="text" placeholder="{{suggestedName}}" value="{{name}}">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">密码</span>
+          <input type="text" placeholder="如果需要密码，请在此输入">
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" id="create">创建房间</button>
+      </div>
+      {{/with}}
+    {{/ionContent}}
+  {{/ionView}}
+</template> -->
+<template name="new">
+  {{#ionModal customTemplate=true}}
+    {{#autoForm collection="Games" id="games-new-form" doc=game type="insert"}}
+      <div class="bar bar-header bar-stable">
+        <button data-dismiss="modal" type="button" class="button button-clear">取消</button>
+        <h2 class="title">新建游戏</h2>
+        <button type="submit" class="button button-positive button-clear" id="create">创建</button>
+      </div>
+      <div class="content has-header overflow-scroll">
+        {{> afQuickFields omitFields="createdAt,status,round,white,black,players,_ownerId"}}
+      </div>
+    {{/autoForm}}
+  {{/ionModal}}
+</template>

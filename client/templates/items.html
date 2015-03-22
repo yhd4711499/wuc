@@ -1,0 +1,26 @@
+<template name="items">
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">词条</h1>
+  {{/contentFor}}
+
+<!--   {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton text="Back" path="home"}}
+  {{/contentFor}} -->
+
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear" data-ion-modal="addItem">{{> ionIcon icon="ios-plus-empty"}}</button>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+        {{#each items}}
+          <a class="item item-icon-right item-button-right" data-ion-modal="itemsEdit" data-id={{_id}}>
+            {{common}}  {{special}}
+            {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+          </a>
+        {{/each}}
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>

@@ -1,0 +1,26 @@
+$loading-font-size: 22px;
+
+@import '.meteor/local/build/programs/server/assets/packages/meteoric_ionic-sass/ionic';
+@import '.meteor/local/build/programs/server/assets/packages/meteoric_ionicons-sass/ionicons';
+
+.contact-detail {
+  background: $stable;
+}
+
+.game-info-1 {
+	color: $assertive;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.item .small {
+	font-size: $font-size-small;
+	color: #b2b2b2;
+}
+
+.item .accent {
+	font-size: $font-size-small;
+	color: $positive;
+}
