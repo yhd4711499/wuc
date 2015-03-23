@@ -1,15 +1,6 @@
 @timers = {}
 
 Meteor.methods
-	newGame: (data) -> 
-		throw new Meteor.Error("You must login to create a game!") if not this.userId
-
-		gameId = Games.insert
-			# createdAt: Date.now()
-			name: data.name
-			status: 0
-			round: 0
-
 	joinGame: (gameId) ->
 		throw new Meteor.Error("You must login to join a game!") if not this.userId
 		existed = Players.findOne
@@ -68,19 +59,10 @@ Meteor.methods
 
 	exitGame: (gameId) ->
 		throw new Meteor.Error("You must login to join a game!") if not this.userId
-		player = Players.findOne
-			_userId: @userId
-			_gameId: gameId
 
 		Players.remove
 			_userId: this.userId
 			_gameId: gameId
-
-		# Games.update
-		# 	_id: gameId
-		# ,
-		# 	$inc:
-		# 		players: -1*n
 
 		if Players.find({_gameId: gameId}).count() == 0
 			gameLog.clear gameId

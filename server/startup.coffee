@@ -23,6 +23,7 @@ seeds = ->
 
 config = ->
 	# AutoForm.setDefaultTemplate('ionic');
+	Kadira.connect('mpX8eTsMgcKQqQ9bH', '65ec7f45-5f5f-46e2-bd44-9729e592714e')
 	UploadServer?.init
 		tmpDir: process.env.PWD + '/.uploads/tmp'
 		uploadDir: process.env.PWD + '/.uploads/'
