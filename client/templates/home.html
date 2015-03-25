@@ -48,6 +48,8 @@
   {{#ionTabs style="ios"}}
       {{> ionTab title="游戏" path="games" iconOff="ios-home-outline" iconOn="ios-home"}}
       {{> ionTab title="我" path="user" iconOff="ios-heart-outline" iconOn="ios-heart"}}
-      {{> ionTab title="后台" path="items" iconOff="ios-gear-outline" iconOn="ios-gear"}}
+      {{#if currentUser.admin}}
+        {{> ionTab title="后台" path="items" iconOff="ios-gear-outline" iconOn="ios-gear"}}
+      {{/if}}
     {{/ionTabs}}
 </template>

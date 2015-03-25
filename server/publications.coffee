@@ -16,3 +16,11 @@ Meteor.publish 'deadPlayers', (gameId) ->
 
 Meteor.publish 'gamelogs', (gameId) ->
 	Gamelogs.find({_gameId: gameId})
+
+Meteor.publish 'userData', ->
+  if @userId
+    return Meteor.users.find({ _id: @userId }, fields:
+      'admin': 1)
+  else
+    @ready()
+  return
